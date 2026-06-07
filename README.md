@@ -104,6 +104,10 @@ npm install
 npm run dev
 
 ```
+<img width="957" height="469" alt="Screenshot 2026-06-08 003200" src="https://github.com/user-attachments/assets/1509ba69-239f-4764-849d-e5a6601053f6" />
+
+
+<img width="957" height="440" alt="Screenshot 2026-06-08 003227" src="https://github.com/user-attachments/assets/083374de-4654-4f10-92e1-47ff3a068236" />
 
 
 
