@@ -1,0 +1,351 @@
+/* Vendor Profile Display Component */
+.vendor-profile-display {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    background: #f5f5f5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.profile-header {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .profile-header {
+        grid-template-columns: 1fr;
+    }
+}
+
+.profile-title h1 {
+    margin: 0 0 10px 0;
+    font-size: 32px;
+    color: #333;
+    font-weight: 700;
+}
+
+.business-type {
+    margin: 5px 0;
+    font-size: 12px;
+    color: #667eea;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.location {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #666;
+}
+
+.qr-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.qr-section h3 {
+    margin: 0 0 15px 0;
+    font-size: 18px;
+    color: #333;
+    font-weight: 600;
+}
+
+.qr-code-container {
+    background: white;
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.qr-code-container img,
+.qr-code-container canvas {
+    display: block;
+    max-width: 200px;
+    height: auto;
+}
+
+.download-btn {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.profile-tabs {
+    display: flex;
+    gap: 10px;
+    background: white;
+    padding: 0 40px;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 30px;
+    border-radius: 12px 12px 0 0;
+    overflow-x: auto;
+}
+
+.tab {
+    padding: 15px 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    color: #999;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s;
+    white-space: nowrap;
+}
+
+.tab:hover {
+    color: #667eea;
+}
+
+.tab.active {
+    color: #667eea;
+    border-bottom-color: #667eea;
+}
+
+.profile-content {
+    background: white;
+    border-radius: 0 0 12px 12px;
+    padding: 40px;
+}
+
+.tab-content {
+    display: space-around;
+}
+
+.profile-section {
+    margin-bottom: 40px;
+}
+
+.profile-section:last-child {
+    margin-bottom: 0;
+}
+
+.profile-section h2 {
+    font-size: 22px;
+    color: #333;
+    margin: 0 0 20px 0;
+    font-weight: 600;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.profile-info {
+    color: #666;
+    line-height: 1.8;
+}
+
+.profile-info p {
+    margin: 10px 0;
+}
+
+.profile-json {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.info-item {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 6px;
+    border-left: 3px solid #667eea;
+}
+
+.info-item strong {
+    display: block;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.info-item p {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.insights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.insight-card {
+    background: linear-gradient(135deg, #f5f7ff 0%, #f0f0f0 100%);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.insight-card h4 {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+    color: #667eea;
+    font-weight: 600;
+}
+
+.insight-card p {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+    font-weight: 600;
+}
+
+.strategy-content,
+.pricing-content,
+.marketing-content {
+    display: space-around;
+}
+
+.strategy-item,
+.pricing-item,
+.marketing-item {
+    margin-bottom: 25px;
+}
+
+.strategy-item h3,
+.pricing-item h3,
+.marketing-item h3 {
+    font-size: 16px;
+    color: #667eea;
+    margin: 0 0 10px 0;
+    font-weight: 600;
+}
+
+.strategy-item ul,
+.pricing-item ul,
+.marketing-item ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.strategy-item li,
+.pricing-item li,
+.marketing-item li {
+    padding: 8px 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.marketing-item .tagline {
+    font-style: italic;
+    color: #667eea;
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.upi-guide {
+    color: #666;
+    line-height: 1.8;
+}
+
+.upi-guide p {
+    margin: 12px 0;
+    font-size: 14px;
+}
+
+.upi-guide p.step {
+    margin: 15px 0;
+    padding-left: 20px;
+    color: #333;
+    font-weight: 500;
+}
+
+.loading,
+.error {
+    text-align: center;
+    padding: 40px;
+    font-size: 16px;
+    color: #666;
+}
+
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.error {
+    background: #fee;
+    color: #c33;
+    border-radius: 8px;
+    border-left: 4px solid #c33;
+}
+
+.profile-footer {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 0 0 12px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #e0e0e0;
+    margin-top: 30px;
+}
+
+.profile-footer p {
+    margin: 0;
+    color: #999;
+    font-size: 13px;
+}
+
+.refresh-btn {
+    padding: 8px 16px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.refresh-btn:hover {
+    background: #764ba2;
+}
+
+@media (max-width: 768px) {
+    .profile-header {
+        padding: 20px;
+    }
+
+    .profile-content {
+        padding: 20px;
+    }
+
+    .insights-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-tabs {
+        padding: 0 20px;
+    }
+}

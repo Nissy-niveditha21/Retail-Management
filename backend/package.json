@@ -1,7 +1,7 @@
 {
-  "name": "retail-management-system",
+  "name": "street-vendor-digitalization-agent",
   "version": "1.0.0",
-  "description": "Retail expense and customer management backend",
+  "description": "Street Vendor Digitalization Agent powered by RAG and IBM Granite",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -10,13 +10,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^1.13.2",
+    "axios": "^1.6.0",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^7.6.3"
+    "mongoose": "^7.6.3",
+    "node-cache": "^5.1.2",
+    "uuid": "^9.0.0",
+    "qrcode": "^1.5.3",
+    "geolib": "^3.3.4"
   },
   "devDependencies": {
     "nodemon": "^3.0.2"

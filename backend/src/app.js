@@ -18,9 +18,18 @@ app.use(express.json());
 app.use('/api/customers', require('./routes/customerRoutes'));
 app.use('/api/expenses', require('./routes/expenseRoutes'));
 app.use('/api/bills', require('./routes/billRoutes'));
+app.use('/api/vendor', require('./routes/vendorRoutes'));
 
 app.get('/', (req, res) => {
-  res.send('Retail Management API Running');
+  res.json({
+    message: 'Street Vendor Digitalization Agent API Running',
+    version: '1.0.0',
+    endpoints: {
+      vendors: '/api/vendor/...',
+      agent: '/api/agent/...',
+      documentation: '/api/docs',
+    },
+  });
 });
 
 module.exports = app;

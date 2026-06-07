@@ -1,190 +1,161 @@
 
-🧾 Retail Management System (Voice-Enabled)
+# Street Vendor Digitalization Agent — Internship Project
 
-A full-stack Retail Management System built with MERN stack, designed specifically for small retail businesses.
-The system includes a voice-only admin interface for effortless daily operations and a structured backend for customer, billing, and expense management.
+Professional, production-oriented implementation of a Street Vendor Digitalization Agent. This project demonstrates building a practical, high-impact full-stack application that combines Retrieval-Augmented Generation (RAG), IBM Granite LLM, geolocation insights, and a voice-first vendor administration experience.
 
-🚀 Key Features
-👩‍💼 Admin (Shop Owner – Voice Only)
+**Project Goals**
 
-🎤 Voice-controlled payment updates
+- Empower informal and micro businesses (street vendors) to quickly adopt digital payments and simple online presence strategies.
+- Generate actionable, localized business profiles and onboarding guidance using RAG-grounded LLM responses.
+- Deliver a lightweight voice-enabled admin interface for fast, low-friction daily operations.
 
-🧾 Automatic bill payment recording
+**Highlights (What Makes This Internship Project Stand Out)**
 
-🔊 Spoken confirmations (no typing required)
+- RAG + LLM integration: Uses a retrieval system to ground Granite model outputs in verified knowledge (MSME schemes, onboarding guides, payment workflows).
+- Multi-language support: Content and interaction flows designed to support local languages for better adoption.
+- Geolocation-aware recommendations: Local SEO, peak-hour insights, and location-specific business tips.
+- Production-ready patterns: Environment-driven configuration, response caching, modular services, and clear separation of concerns.
 
-👵 Senior-friendly UI (minimal buttons, no forms)
+**Live Local Preview**
 
-👥 Customers
+- Frontend: http://localhost:5173
+- Backend API: http://localhost:5000
 
-Ledger-style bill tracking
+**Key Features**
 
-Automatic due calculation
+- AI-generated vendor profiles and onboarding guides (IBM Granite)
+- Searchable knowledge base (RAG) with MSME policy references
+- Voice-first admin interface for quick payments and confirmations
+- UPI setup guidance and QR code generation
+- Local SEO and pricing strategy recommendations
+- Vendor profile persistence (MongoDB) and CRUD APIs
 
-Secure backend-driven updates
+**Architecture Overview**
 
-📊 Business Analytics
+The application follows a modular service architecture:
 
-Total revenue
+- Backend: Express + Node.js with service modules (ibmGraniteService, ragEngine, languageService, geolocationService, vendorProfileService)
+- Frontend: React + Vite with focused components (VendorOnboarding, AgentChat, VendorProfileDisplay, KnowledgeBase, LocalInsights)
+- Data: MongoDB with a comprehensive `VendorProfile` schema
 
-Pending dues
+**Tech Stack**
 
-Expenses by category
+- Node.js, Express, MongoDB, Mongoose
+- React (Vite), Axios
+- IBM Granite (watsonx / Granite LLM)
+- RAG (custom retrieval engine), node-cache
 
-🧠 Why Voice-First?
+**Quick Start — Development**
 
-This system is intentionally designed for non-technical users:
+1. Clone the repository
 
-No keyboards
-
-No typing
-
-Fewer errors
-
-Faster daily operations
-
-Perfect for parents, shop owners, and small businesses.
-
-🏗️ Tech Stack
-Frontend
-
-React (Vite)
-
-Axios
-
-Web Speech API (SpeechRecognition + SpeechSynthesis)
-
-Backend
-
-Node.js
-
-Express.js
-
-MongoDB + Mongoose
-
-Tools
-
-MongoDB Compass
-
-Nodemon
-
-Vite Dev Server
-
-📁 Project Structure
-retail-management-system/
-│
-├── backend/
-│   ├── routes/
-│   ├── src/
-│   │   ├── models/
-│   │   ├── config/
-│   ├── server.js
-│
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   │   └── AdminVoice.jsx
-│   │   ├── api/
-│   │   │   └── axios.js
-│   │   └── App.jsx
-│
-└── README.md
-
-⚙️ Setup Instructions
-1️⃣ Clone Repository
+```bash
 git clone <your-repo-url>
-cd retail-management-system
+cd Retail-Management
+```
 
-2️⃣ Backend Setup
+2. Backend
+
+```bash
 cd backend
-npm install
-
-
-Create .env file:
-
-PORT=5000
-MONGO_URI=mongodb://127.0.0.1:27017/retail_db
-
-
-Run backend:
-
-npm run dev
-
-3️⃣ Frontend Setup
-cd ../frontend
+cp .env.example .env
+# Edit .env: set MONGODB_URI, IBM_GRANITE_API_KEY, IBM_GRANITE_PROJECT_ID
 npm install
 npm run dev
+```
 
+3. Frontend
 
-Frontend runs on:
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-http://localhost:5173
+Open http://localhost:5173 to view the app.
 
-🎤 How Voice Admin Works
+**Important Environment Variables (backend/.env)**
 
-Click Speak
+- `MONGODB_URI` — MongoDB connection string
+- `IBM_GRANITE_API_KEY` — IBM Cloud Watsonx API key (required for full AI functionality)
+- `IBM_GRANITE_PROJECT_ID` — Watsonx project identifier
+- `PORT`, `CORS_ORIGIN`, `JWT_SECRET` — runtime configuration
 
-Say:
+**Selected API Endpoints**
 
-“Anjali paid 500 today”
+- `POST /api/vendor/create` — Create vendor profile (triggers AI profile generation)
+- `GET /api/vendor/:id` — Fetch vendor profile
+- `POST /api/agent/query` — Query the AI agent (RAG + Granite)
+- `GET /api/knowledge-base` — Browse RAG documents
 
-System asks for confirmation
+Example: Create a vendor (curl)
 
-Select customer → Confirm
+```bash
+curl -X POST http://localhost:5000/api/vendor/create \
+	-H "Content-Type: application/json" \
+	-d '{
+		"name":"Ram",
+		"businessType":"fruit-vendor",
+		"phone":"9876543210",
+		"location":"Camp, Pune",
+		"productsServices":"Fresh fruits",
+		"language":"en"
+	}'
+```
 
-Database updates automatically
+**Notes for Evaluation / Interview**
 
-System responds with voice feedback
+- Be prepared to explain the RAG prompt construction flow and how retrieved docs improve LLM outputs.
+- Discuss trade-offs for caching LLM responses and the approach to cost-control with API rate limiting.
+- Highlight accessibility choices made for voice-first interactions and how they aid real users.
 
-🔍 Verifying Data in Database
-MongoDB Compass
+**Future Roadmap**
 
-Database: retail_db
+- Production hardening (HTTPS, rate-limiting, secrets management)
+- Expand regional language support and offline voice recognition fallbacks
+- Mobile-first client or progressive web app
+- Integrations with payment providers and MSME onboarding portals
 
-Collection: bills
+**Contributing & Contact**
 
-Check:
+If you want to review the code or need a demo for your interview, reach out to the project owner or open an issue.
 
-paidAmount
+**License**
 
-updatedAt
+This repository is provided for demo and evaluation purposes. Include license details here if required by your organization.
 
-📌 Current Status
+---
 
-✅ Backend APIs stable
+Built for internship showcase — optimized for clarity, impact, and technical depth.
 
-✅ MongoDB integrated
+---
 
-✅ React frontend functional
+<!-- Badges -->
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://example.com)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Node.js](https://img.shields.io/badge/node-%3E%3D16-brightgreen.svg)](https://nodejs.org/)
+[![IBM Granite](https://img.shields.io/badge/IBM-Granite-purple.svg)](https://www.ibm.com/products/granite-llm)
 
-✅ Voice-only admin interface live
+![Hero](https://img.shields.io/badge/Street%20Vendor%20Digitalization-Agent-667eea?style=for-the-badge&logo=appveyor)
 
-🚧 Advanced NLP (future scope)
+## Quick Visual Summary
 
-🌱 Future Enhancements
+- Theme: Gradient purple (🔵 #667eea → 🟣 #764ba2)
+- UX focus: Voice-first admin, minimal controls, clear CTAs
+- Core capability: RAG-grounded LLM generation (IBM Granite) + Local insights
 
-Hindi / Hinglish voice support
+---
 
-Undo last payment
+## Table of Contents
 
-Daily voice summary
+- [Project Goals](#project-goals)
+- [Highlights](#highlights-what-makes-this-internship-project-stand-out)
+- [Key Features](#key-features)
+- [Architecture & Tech Stack](#architecture--tech-stack)
+- [Quick Start — Development](#quick-start--development)
+- [Demo Commands](#demo-commands)
+- [Interview Notes](#notes-for-evaluation--interview)
+- [Roadmap](#future-roadmap)
 
-Customer SMS notifications
+---
 
-Role-based dashboards
-
-🧠 Learning Outcomes
-
-REST API design
-
-MERN full-stack architecture
-
-Voice-driven UI design
-
-Real-world business logic
-
-Clean component separation
-
-👤 Author
-
-Built with ❤️ for real-world retail use.
