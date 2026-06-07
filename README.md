@@ -1,5 +1,5 @@
 
-# Street Vendor Digitalization Agent — Internship Project
+# Street Vendor Digitalization Agent 
 
 Professional, production-oriented implementation of a Street Vendor Digitalization Agent. This project demonstrates building a practical, high-impact full-stack application that combines Retrieval-Augmented Generation (RAG), IBM Granite LLM, geolocation insights, and a voice-first vendor administration experience.
 
