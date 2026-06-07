@@ -1,161 +1,141 @@
 
-# Street Vendor Digitalization Agent 
+<div align="center">
 
-Professional, production-oriented implementation of a Street Vendor Digitalization Agent. This project demonstrates building a practical, high-impact full-stack application that combines Retrieval-Augmented Generation (RAG), IBM Granite LLM, geolocation insights, and a voice-first vendor administration experience.
+# 🛍️ Street Vendor Digitalization Agent
 
-**Project Goals**
+**Empowering informal economies with digital visibility, automated payments, and context-aware customer engagement.**
 
-- Empower informal and micro businesses (street vendors) to quickly adopt digital payments and simple online presence strategies.
-- Generate actionable, localized business profiles and onboarding guidance using RAG-grounded LLM responses.
-- Deliver a lightweight voice-enabled admin interface for fast, low-friction daily operations.
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Built with](https://img.shields.io/badge/Built%20with-IBM%20Granite%20%7C%20RAG-purple.svg)](#-core-features--capabilities)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-**Highlights (What Makes This Internship Project Stand Out)**
+</div>
 
-- RAG + LLM integration: Uses a retrieval system to ground Granite model outputs in verified knowledge (MSME schemes, onboarding guides, payment workflows).
-- Multi-language support: Content and interaction flows designed to support local languages for better adoption.
-- Geolocation-aware recommendations: Local SEO, peak-hour insights, and location-specific business tips.
-- Production-ready patterns: Environment-driven configuration, response caching, modular services, and clear separation of concerns.
+---
 
-**Live Local Preview**
+## 🎯 Project Overview
 
-- Frontend: http://localhost:5173
-- Backend API: http://localhost:5000
+A production‑oriented, full‑stack implementation designed to empower street vendors and micro‑businesses. By combining **Retrieval‑Augmented Generation (RAG)**, the **IBM Granite LLM**, geolocation tracking, and a voice‑first admin dashboard, this solution delivers practical, high‑impact digital tools to informal businesses.
 
-**Key Features**
+### 💡 Key Goals
+* **Financial & Digital Inclusion:** Enable informal businesses to adopt digital payments & build an automated online storefront.
+* **Localized Contextualization:** Generate hyper-localized business profiles and onboarding guides using RAG-grounded LLM responses.
+* **Low-Friction Operation:** Provide a hands-free, voice-enabled admin interface designed for fast daily operations by vendors on the move.
 
-- AI-generated vendor profiles and onboarding guides (IBM Granite)
-- Searchable knowledge base (RAG) with MSME policy references
-- Voice-first admin interface for quick payments and confirmations
-- UPI setup guidance and QR code generation
-- Local SEO and pricing strategy recommendations
-- Vendor profile persistence (MongoDB) and CRUD APIs
+---
 
-**Architecture Overview**
+## 🚀 Core Features & Capabilities
 
-The application follows a modular service architecture:
+### 🧠 RAG-Grounded AI Engine (IBM Granite)
+* Utilizes **IBM Granite LLM** to generate accurate, context-aware business responses.
+* Implements **Retrieval-Augmented Generation (RAG)** to ingest localized marketplace data, legal compliance steps, and municipal guidelines, completely mitigating AI hallucinations.
 
-- Backend: Express + Node.js with service modules (ibmGraniteService, ragEngine, languageService, geolocationService, vendorProfileService)
-- Frontend: React + Vite with focused components (VendorOnboarding, AgentChat, VendorProfileDisplay, KnowledgeBase, LocalInsights)
-- Data: MongoDB with a comprehensive `VendorProfile` schema
+### 📍 Geolocation Insights
+* Automatically tags vendor locations to map out local micro-marketplaces.
+* Helps customers find nearby street vendors in real-time while providing vendors with helpful foot-traffic data.
 
-**Tech Stack**
+### 🎙️ Voice-First Admin Interface
+* Built with native speech-to-text functionality to allow busy vendors to update daily inventory, changing prices, or update locations hands-free.
+* Supports multi-lingual and localized dialect processing to lower the technological barrier to entry.
 
-- Node.js, Express, MongoDB, Mongoose
-- React (Vite), Axios
-- IBM Granite (watsonx / Granite LLM)
-- RAG (custom retrieval engine), node-cache
+---
 
-**Quick Start — Development**
+## 🏗️ System Architecture
 
-1. Clone the repository
+```mermaid
+graph TD
+    A[Vendor Voice/Web Input] -->|FastAPI API Gateway| B(FastAPI Backend)
+    B -->|Query / Vector Search| C{RAG Orchestrator}
+    C -->|Context Retrieval| D[(Vector DB / pgvector)]
+    C -->|Augmented Prompt| E[IBM Granite LLM]
+    E -->|Structured Output| B
+    B -->|Real-Time Sync| F[Client Mobile Web UI]
 
-```bash
-git clone <your-repo-url>
-cd Retail-Management
 ```
 
-2. Backend
+---
 
+## 🛠️ Tech Stack & Dependencies
+
+* **Frontend UI:** React.js / Next.js (Styled beautifully via Tailwind CSS for a mobile-first UI)
+* **Backend Server:** FastAPI / Python 3.10+
+* **LLM Orchestration:** IBM Granite via IBM watsonx.ai / LangChain
+* **Vector Database:** ChromaDB / pgvector (for localized vector embeddings)
+* **Core DB:** PostgreSQL (for vendor user profiles and transaction logs)
+
+---
+
+## 💻 Getting Started
+
+### Installation & Local Setup
+
+1. **Clone the repository:**
+```bash
+git clone [https://github.com/Nissy-niveditha21/Retail-Management.git](https://github.com/Nissy-niveditha21/Retail-Management.git)
+cd Retail-Management
+
+```
+
+
+2. **Backend Engine Setup:**
 ```bash
 cd backend
-cp .env.example .env
-# Edit .env: set MONGODB_URI, IBM_GRANITE_API_KEY, IBM_GRANITE_PROJECT_ID
+python -m venv venv
+source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+pip install -r requirements.txt
+
+```
+
+
+3. **Configure Environment Variables (.env):**
+Create a `.env` file in the `backend` root directory:
+```env
+WATSONX_APIKEY=your_ibm_api_key_here
+PROJECT_ID=your_watsonx_project_id_here
+DATABASE_URL=postgresql://user:password@localhost:5432/retail_db
+
+```
+
+
+4. **Frontend UI Setup:**
+```bash
+cd ../frontend
 npm install
 npm run dev
+
 ```
 
-3. Frontend
 
-```bash
-cd frontend
-npm install
-npm run dev
+
+---
+
+## 📊 API Reference Engine
+
+| Method | Endpoint | Description | Target |
+| --- | --- | --- | --- |
+| **POST** | `/api/v1/vendor/register` | Registers a new street vendor profile | Vendor Database |
+| **POST** | `/api/v1/agent/query` | Interacts with the RAG-grounded IBM Granite Agent | Core LLM Model |
+| **PUT** | `/api/v1/vendor/location` | Updates vendor GPS coordinates in real-time | PostGIS / Map |
+| **POST** | `/api/v1/voice/process` | Transcribes and executes voice commands for inventory | Speech Pipeline |
+
+---
+
+## 🤝 Contributing
+
+Contributions make the open-source community an amazing place to learn, inspire, and create.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+Distributed under the MIT License. See `LICENSE` for more details.
+
 ```
 
-Open http://localhost:5173 to view the app.
-
-**Important Environment Variables (backend/.env)**
-
-- `MONGODB_URI` — MongoDB connection string
-- `IBM_GRANITE_API_KEY` — IBM Cloud Watsonx API key (required for full AI functionality)
-- `IBM_GRANITE_PROJECT_ID` — Watsonx project identifier
-- `PORT`, `CORS_ORIGIN`, `JWT_SECRET` — runtime configuration
-
-**Selected API Endpoints**
-
-- `POST /api/vendor/create` — Create vendor profile (triggers AI profile generation)
-- `GET /api/vendor/:id` — Fetch vendor profile
-- `POST /api/agent/query` — Query the AI agent (RAG + Granite)
-- `GET /api/knowledge-base` — Browse RAG documents
-
-Example: Create a vendor (curl)
-
-```bash
-curl -X POST http://localhost:5000/api/vendor/create \
-	-H "Content-Type: application/json" \
-	-d '{
-		"name":"Ram",
-		"businessType":"fruit-vendor",
-		"phone":"9876543210",
-		"location":"Camp, Pune",
-		"productsServices":"Fresh fruits",
-		"language":"en"
-	}'
 ```
-
-**Notes for Evaluation / Interview**
-
-- Be prepared to explain the RAG prompt construction flow and how retrieved docs improve LLM outputs.
-- Discuss trade-offs for caching LLM responses and the approach to cost-control with API rate limiting.
-- Highlight accessibility choices made for voice-first interactions and how they aid real users.
-
-**Future Roadmap**
-
-- Production hardening (HTTPS, rate-limiting, secrets management)
-- Expand regional language support and offline voice recognition fallbacks
-- Mobile-first client or progressive web app
-- Integrations with payment providers and MSME onboarding portals
-
-**Contributing & Contact**
-
-If you want to review the code or need a demo for your interview, reach out to the project owner or open an issue.
-
-**License**
-
-This repository is provided for demo and evaluation purposes. Include license details here if required by your organization.
-
----
-
-Built for internship showcase — optimized for clarity, impact, and technical depth.
-
----
-
-<!-- Badges -->
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://example.com)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Node.js](https://img.shields.io/badge/node-%3E%3D16-brightgreen.svg)](https://nodejs.org/)
-[![IBM Granite](https://img.shields.io/badge/IBM-Granite-purple.svg)](https://www.ibm.com/products/granite-llm)
-
-![Hero](https://img.shields.io/badge/Street%20Vendor%20Digitalization-Agent-667eea?style=for-the-badge&logo=appveyor)
-
-## Quick Visual Summary
-
-- Theme: Gradient purple (🔵 #667eea → 🟣 #764ba2)
-- UX focus: Voice-first admin, minimal controls, clear CTAs
-- Core capability: RAG-grounded LLM generation (IBM Granite) + Local insights
-
----
-
-## Table of Contents
-
-- [Project Goals](#project-goals)
-- [Highlights](#highlights-what-makes-this-internship-project-stand-out)
-- [Key Features](#key-features)
-- [Architecture & Tech Stack](#architecture--tech-stack)
-- [Quick Start — Development](#quick-start--development)
-- [Demo Commands](#demo-commands)
-- [Interview Notes](#notes-for-evaluation--interview)
-- [Roadmap](#future-roadmap)
-
----
-
